@@ -2,8 +2,14 @@
 color 0a
 title HighLow
 
-echo Compiling source file...
+echo Attempting to compile...
 javac HighLow.java
 
 echo.
 echo Done.
+pause
+
+echo Starting game...
+echo.
+
+run

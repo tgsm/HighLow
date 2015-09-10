@@ -15,21 +15,20 @@ import java.util.Random;
  * @author Thomas
  */
 public class HighLow {
-	
-	static Scanner s = new Scanner(System.in);
-	static Random r = new Random();
+	Scanner s = new Scanner(System.in);
+	Random r = new Random();
 	
 	/**
 	 * The number of tries the user has to get the number right.
 	 */
-	static int tries = 10;
+	int tries = 10;
 	
 	/**
 	 * I created this method mainly to save filesize.
 	 * 
 	 * @param text The text that is used in the error message.
 	 */
-	static void logError(String text) {
+	void logError(String text) {
 		System.err.println(text);
 	}
 	
@@ -38,11 +37,31 @@ public class HighLow {
 	 * 
 	 * @param text The text that is used in the message.
 	 */
-	static void log(String text) {
+	void log(String text) {
 		System.out.println(text);
 	}
+	
+	HighLow() {
+		String easy = "Easy";
+		String medium = "Medium";
+		String hard = "Hard";
+		
+		// Asks the user what they want the difficulty to be
+		log("Please select a difficulty: easy, medium, or hard");
+		String difficulty = s.nextLine();
+		
+		if (difficulty.equalsIgnoreCase(easy)) {
+			easy();
+		} else if (difficulty.equalsIgnoreCase(medium)) {
+			medium();
+		} else if (difficulty.equalsIgnoreCase(hard)) {
+			hard();
+		} else {
+			logError("That's not a difficulty");
+		}
+	}
 
-	static void easy() {
+	void easy() {
 		int guess;
 		int randNum = r.nextInt(11);
 		if (randNum == 0) randNum = 1;
@@ -66,7 +85,7 @@ public class HighLow {
 		}
 	}
 	
-	static void medium() {
+	void medium() {
 		int guess;
 		int randNum = r.nextInt(101);
 		if (randNum == 0) randNum = 1;
@@ -90,7 +109,7 @@ public class HighLow {
 		}
 	}
 	
-	static void hard() {
+	void hard() {
 		int guess;
 		int randNum = r.nextInt(1001);
 		if (randNum == 0) randNum = 1;
@@ -115,22 +134,6 @@ public class HighLow {
 	}
 	
 	public static void main(String[] args) {
-		String easy = "Easy";
-		String medium = "Medium";
-		String hard = "Hard";
-		
-		// Asks the user what they want the difficulty to be
-		log("Please select a difficulty: easy, medium, or hard");
-		String difficulty = s.nextLine();
-		
-		if (difficulty.equalsIgnoreCase(easy)) {
-			easy();
-		} else if (difficulty.equalsIgnoreCase(medium)) {
-			medium();
-		} else if (difficulty.equalsIgnoreCase(hard)) {
-			hard();
-		} else {
-			logError("That's not a difficulty");
-		}
+		new HighLow();
 	}
 }
